@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+O desafio é criar um CRUD utilizando HTML, CSS, Javascript e React.  
+Você irá definir o layout e as cores que irá utilizar durante o projeto. 
+É importante lembrar que você deve seguir os seguintes critérios: 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ 
+- o usuário não logado, deve poder entrar na tela de login para digitar suas credenciais
+- se o usuário, na tela de login, tentar autenticar com um dado que não exista no localstorage , deverá ver os inputs com a borda vermelha e o texto correspondente ao input com a mensagem de erro 
+- se não existir dados, o usuário deve ver um botao de "criar conta" conforme layout 
+- ao clicar em criar conta, o usuário deve ser redirecionado para a pagina de criação de conta 
+- ao finalizar o cadastro, o usuário deve retornar para a pagina de login novamente 
+- o usuário logado, ao entrar na home, deve poder ver a lista de pessoas cadastradas, um opção de deslogar e o icone do mateus 
+- cada card da lista, deve ter as opção de excluir e editar conforme layout 
+- a listagem de usuário deve possuir um scroll 
+- na tela de home, ao clicar em um card de uma pessoa, redirecionar pra página de edicao, juntamente com os dados 
+- a tela deve de edicao deve inicar preechida com os dados do usuário selecionado 
+- a edicao deve refletir de imediato no storage da aplicacao 
+- ao clicar em salvar, deve redirecionar para a tela de home novamente e trazer a lista de usuários atualizada 
+- ao clicar no botao de criar, deve redirecionar para a pagina de criacao de usuário 
+- o usuário deve ver a opção de inserir imagem 
+- o usuário deve preencher os dados nos inputs 
+- ao clicar em salvar, redirecionar para a home 
+- ao clicar em deslogar, o usuário deve retornar para a tela de login 
+- a aplicacao deve resetar o storage 
 
-## Available Scripts
+Obs.: seria legal ter um layout responsivo 
 
-In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Os critérios que pretendemos avaliar em seu código são:  
+- a capacidade de pensar;  
+- seguir requisitos; 
+- boa organização e estruturação; 
+- utilização dos hooks do React; 
+- gerenciamento de estados; 
+- uso de rotas; 
+- uso de localstorage; 
+- iteração de objetos; 
+- validações de inputs. 
