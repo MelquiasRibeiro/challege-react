@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
@@ -47,13 +47,39 @@ export const Input = styled.input`
   margin-top: 16px;
   font-size: 16px;
 `;
-export const Button = styled.button`
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg)
+  }
+`;
+export const Button = styled.button.attrs((props) => ({
+  type: "submit",
+  disabled: props.loading,
+}))`
   border-radius: 24px;
   font-weight: bold;
   height: 50px;
   width: 90%;
   border-style: none;
   background-color: #191920;
+
+  &:hover {
+    opacity: 0.7;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  ${(props) =>
+    props.loading &&
+    css`
+      svg {
+        animation: ${rotate} 2s infinite;
+      }
+    `}
 `;
 export const LinkBack = styled(Link)`
   text-decoration: none;
