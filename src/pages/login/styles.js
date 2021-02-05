@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   margin: 32px;
 `;
-export const LoginContainer = styled.div`
+export const LoginContainer = styled.form`
   display: flex;
   background-color: #ffffff;
   flex-direction: column;
