@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -53,4 +54,11 @@ export const Button = styled.button`
   width: 90%;
   border-style: none;
   background-color: #191920;
+`;
+export const LinkBack = styled(Link)`
+  text-decoration: none;
+  transition: opacity 0.2s;
+  &:hover {
+    opacity: 0.7;
+  }
 `;

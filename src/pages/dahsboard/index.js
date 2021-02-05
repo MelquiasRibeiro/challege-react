@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container } from './styles';
+import { Wrapper } from './styles';
 
 export default function Dashboard() {
     return (
-        <Container>
+        <Wrapper>
             <h1>Dash</h1>
-        </Container>
+        </Wrapper>
     );
 }

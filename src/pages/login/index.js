@@ -6,6 +6,7 @@ import {
   InputContainer,
   Input,
   Button,
+  LinkBack,
 } from './styles';
 
 export default function Login() {
@@ -19,8 +20,10 @@ export default function Login() {
         </InputContainer>
         <Button>ENTRAR</Button>
         <p>
-          Cadastre-se aqui
-          <FaSignInAlt color="#191920" />
+          <LinkBack to="/register">
+            Cadastre-se aqui
+            <FaSignInAlt color="#191920" />
+          </LinkBack>
         </p>
       </LoginContainer>
     </Wrapper>
