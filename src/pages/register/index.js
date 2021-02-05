@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import { FaArrowLeft, FaSpinner } from "react-icons/fa";
 import {
   Wrapper,
@@ -13,7 +14,7 @@ import {
 import form from "../../assets/images/form.svg";
 
 export default function Register() {
-  // const history = useHistory();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -58,10 +59,11 @@ export default function Register() {
     } catch (err) {
       setError(err);
       console.log(err);
-    } finally {
       setLoading(false);
     }
+    setLoading(false);
     localStorage.setItem("users", JSON.stringify(users));
+    history.push('/login');
   }
 
   return (

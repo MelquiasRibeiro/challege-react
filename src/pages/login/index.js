@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { FaSignInAlt } from "react-icons/fa";
 import {
   Wrapper,
@@ -33,6 +33,7 @@ export default function Login() {
       if (hasUser.email === email && hasUser.password === password) {
         console.log("logado");
         setLoading(false);
+        history.push('/dashboard');
       }
       console.log("algo errado");
       setLoading(false);
