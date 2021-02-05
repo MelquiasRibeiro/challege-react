@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled, { keyframes, css } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ export const InfoContainer = styled.div`
   }
 `;
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -73,7 +73,19 @@ export const Input = styled.input`
   margin-top: 16px;
   font-size: 16px;
 `;
-export const Button = styled.button`
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg)
+  }
+`;
+export const Button = styled.button.attrs((props) => ({
+  type: "submit",
+  disabled: props.loading,
+}))`
   border-radius: 24px;
   font-weight: bold;
   height: 50px;
@@ -81,8 +93,22 @@ export const Button = styled.button`
   border-style: none;
   background-color: #191920;
   margin-top: 32px;
+  transition: opacity 0.2s;
+  &:hover {
+    opacity: 0.7;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  ${(props) =>
+    props.loading &&
+    css`
+      svg {
+        animation: ${rotate} 2s infinite;
+      }
+    `}
 `;
-
 export const LinkBack = styled(Link)`
   text-decoration: none;
   transition: opacity 0.2s;

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // import { useHistory } from 'react-router-dom';
-import { FaSignInAlt } from 'react-icons/fa';
+import { FaSignInAlt } from "react-icons/fa";
 import {
   Wrapper,
   LoginContainer,
@@ -8,18 +8,18 @@ import {
   Input,
   Button,
   LinkBack,
-} from './styles';
+} from "./styles";
 
 export default function Login() {
   // const history = useHistory();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(null);
 
   function login(e) {
     e.preventDefault();
-    console.log(email, password, 'logado');
+    console.log(email, password, "logado");
   }
 
   return (

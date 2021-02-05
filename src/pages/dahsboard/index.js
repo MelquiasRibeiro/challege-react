@@ -1,6 +1,6 @@
-import React from 'react';
-import { MdDelete } from 'react-icons/md';
-import { AiFillEdit } from 'react-icons/ai';
+import React from "react";
+import { MdDelete } from "react-icons/md";
+import { AiFillEdit } from "react-icons/ai";
 
 import {
     Wrapper,
@@ -8,29 +8,29 @@ import {
     ListItem,
     IconsContainer,
     RigthSideContainer,
-} from './styles';
-import Header from '../../components/header';
-import User from '../../assets/images/user.svg';
+} from "./styles";
+import Header from "../../components/header";
+import User from "../../assets/images/user.svg";
 
 export default function Dashboard() {
     const users = [
         {
             picture: User,
-            name: 'melquias Rosa Ribeiro',
-            email: 'melquias10.mr@gmail.com',
-            phone: '(98)981877537',
+            name: "melquias Rosa Ribeiro",
+            email: "melquias10.mr@gmail.com",
+            phone: "(98)981877537",
         },
         {
             picture: User,
-            name: 'melquias Rosa Ribeiro',
-            email: 'melquias10.mr@gmail.com',
-            phone: '(98)981877537',
+            name: "melquias Rosa Ribeiro",
+            email: "melquias10.mr@gmail.com",
+            phone: "(98)981877537",
         },
         {
             picture: User,
-            name: 'melquias Rosa Ribeiro',
-            email: 'melquias10.mr@gmail.com',
-            phone: '(98)981877537',
+            name: "melquias Rosa Ribeiro",
+            email: "melquias10.mr@gmail.com",
+            phone: "(98)981877537",
         },
     ];
 
