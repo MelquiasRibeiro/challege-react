@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import { useHistory } from 'react-router-dom';
 import { FaArrowLeft, FaSpinner } from "react-icons/fa";
+import {toast} from 'react-toastify'
 import {
   Wrapper,
   RegisterContainer,
@@ -25,7 +26,17 @@ export default function Register() {
   const [error, setError] = useState(null);
 
 
-
+  function notify(message) {
+    toast.success(message, {
+      position: "top-center",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  }
   useEffect(() => {
     const savedUsers = localStorage.getItem("users");
     if (savedUsers) {
@@ -60,6 +71,7 @@ export default function Register() {
         password,
       };
       setUsers([...users, newUser]);
+      notify('Usuário Criado com Sucesso!')
       setLoading(false);
     } catch (err) {
       setError(err);

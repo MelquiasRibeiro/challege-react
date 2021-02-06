@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import { FaSignInAlt } from "react-icons/fa";
+import {toast} from 'react-toastify'
 import {
   Wrapper,
   LoginContainer,
@@ -16,7 +17,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
-  // const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const savedUsers = localStorage.getItem("users");
@@ -25,23 +26,31 @@ export default function Login() {
     }
   }, []);
 
+  function notify(message) {
+    toast.error(message, {
+      position: "top-center",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  }
+
   function Handlelogin(e) {
     e.preventDefault();
     setLoading(true);
-    try {
       const hasUser = users.find((r) => r.email === email);
       if (hasUser.email === email && hasUser.password === password) {
         console.log("logado");
         setLoading(false);
         history.push('/dashboard');
       }
-      console.log("algo errado");
-      setLoading(false);
-    } catch (err) {
-      console.log(err);
+      notify('Credenciais inválidas, tente novamente')
+      setError(true)
       setLoading(false);
 
-    }
   }
 
   return (
@@ -55,6 +64,7 @@ export default function Login() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            error={error}
           />
           <Input
             type="password"
@@ -62,6 +72,7 @@ export default function Login() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            error={error}
           />
         </InputContainer>
         <Button loading={loading}>ENTRAR</Button>

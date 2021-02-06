@@ -43,7 +43,7 @@ export const Input = styled.input`
   padding: 8px 24px;
   color: #191920;
   font-weight: bold;
-  border: solid 1px #191920;
+  border: 1px solid ${(props) => (props.error ? '#ff6b6b' : '#191920')};
   margin-top: 16px;
   font-size: 16px;
 `;
