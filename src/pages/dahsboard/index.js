@@ -14,6 +14,14 @@ import UserPic from "../../assets/images/user.svg";
 export default function Dashboard() {
   const [users, setUsers] = useState([]);
 
+
+  useEffect(() => {
+    const savedUsers = localStorage.getItem("users");
+    if (savedUsers) {
+      setUsers(JSON.parse(savedUsers));
+    }
+  }, []);
+
   function handleDelete(user){
     setUsers(users.filter(u=> u !== user))
   }
@@ -22,12 +30,6 @@ export default function Dashboard() {
     localStorage.setItem("users", JSON.stringify(users))
   }, [users])
 
-  useEffect(() => {
-    const savedUsers = localStorage.getItem("users");
-    if (savedUsers) {
-      setUsers(JSON.parse(savedUsers));
-    }
-  }, []);
 
     return (
         <>

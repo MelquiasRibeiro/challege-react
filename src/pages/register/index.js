@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { FaArrowLeft, FaSpinner } from "react-icons/fa";
 import {
   Wrapper,
@@ -14,7 +14,7 @@ import {
 import form from "../../assets/images/form.svg";
 
 export default function Register() {
-  const history = useHistory();
+ // const history = useHistory();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -24,12 +24,16 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+
+
   useEffect(() => {
     const savedUsers = localStorage.getItem("users");
     if (savedUsers) {
       setUsers(JSON.parse(savedUsers));
     }
   }, []);
+
+
 
   function confirmPaword() {
     if (password !== passwordConfirmation) {
@@ -56,15 +60,20 @@ export default function Register() {
         password,
       };
       setUsers([...users, newUser]);
+      setLoading(false);
     } catch (err) {
       setError(err);
       console.log(err);
       setLoading(false);
     }
-    setLoading(false);
-    localStorage.setItem("users", JSON.stringify(users));
-    history.push('/login');
+    // history.push('/login');
+
   }
+
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(users));
+  }, [users])
+
 
   return (
     <Wrapper>
