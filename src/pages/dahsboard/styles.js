@@ -50,7 +50,14 @@ export const IconsContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  > svg {
+
+  >button{
+    background:none;
     margin: 0 8px;
+    border:none;
+    transition: opacity 0.2s;
+    &:hover {
+    opacity: 0.7;
+  }
   }
 `;

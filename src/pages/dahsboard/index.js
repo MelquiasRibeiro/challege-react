@@ -1,7 +1,6 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { MdDelete } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
-
 import {
     Wrapper,
     ListContainer,
@@ -10,29 +9,23 @@ import {
     RigthSideContainer,
 } from "./styles";
 import Header from "../../components/header";
-import User from "../../assets/images/user.svg";
+import UserPic from "../../assets/images/user.svg";
 
 export default function Dashboard() {
-    const users = [
-        {
-            picture: User,
-            name: "melquias Rosa Ribeiro",
-            email: "melquias10.mr@gmail.com",
-            phone: "(98)981877537",
-        },
-        {
-            picture: User,
-            name: "melquias Rosa Ribeiro",
-            email: "melquias10.mr@gmail.com",
-            phone: "(98)981877537",
-        },
-        {
-            picture: User,
-            name: "melquias Rosa Ribeiro",
-            email: "melquias10.mr@gmail.com",
-            phone: "(98)981877537",
-        },
-    ];
+  const [users, setUsers] = useState([]);
+
+  function handleDelete(user){
+    setUsers(users.filter(u=> u !== user))
+    const data=[...users]
+    localStorage.setItem("users", JSON.stringify(data))
+  }
+
+  useEffect(() => {
+    const savedUsers = localStorage.getItem("users");
+    if (savedUsers) {
+      setUsers(JSON.parse(savedUsers));
+    }
+  }, []);
 
     return (
         <>
@@ -41,17 +34,21 @@ export default function Dashboard() {
                 <h1>Lista de Usuários</h1>
                 <ListContainer>
                     {users.map((user) => (
-                        <ListItem>
-                            <img src={user.picture} alt="user.name" />
+                        <ListItem key={user.name}>
+                            <img src={user.picture===null? UserPic:user.picture} alt="user.name" />
                             <RigthSideContainer>
                                 <div>
                                     <strong>{user.name}</strong>
                                     <p>{user.email}</p>
-                                    <p>{user.phone}</p>
+                                    <p>{user.phone } </p>
                                 </div>
                                 <IconsContainer>
-                                    <MdDelete color="#F63E37" size={32} />
-                                    <AiFillEdit size={32} />
+                                  <button type="button"  >
+                                      <AiFillEdit size={32}color="#000" />
+                                  </button>
+                                  <button type="button" onClick={()=>handleDelete(user)}>
+                                      <MdDelete color="#F63E37" size={32} />
+                                  </button>
                                 </IconsContainer>
                             </RigthSideContainer>
                         </ListItem>
