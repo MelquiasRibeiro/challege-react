@@ -16,9 +16,11 @@ export default function Dashboard() {
 
   function handleDelete(user){
     setUsers(users.filter(u=> u !== user))
-    const data=[...users]
-    localStorage.setItem("users", JSON.stringify(data))
   }
+
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(users))
+  }, [users])
 
   useEffect(() => {
     const savedUsers = localStorage.getItem("users");
