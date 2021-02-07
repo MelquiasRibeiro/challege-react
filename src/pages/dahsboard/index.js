@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { MdDelete } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import {
     Wrapper,
     ListContainer,
@@ -48,7 +49,9 @@ export default function Dashboard() {
                                 </div>
                                 <IconsContainer>
                                   <button type="button"  >
+                                    <Link to={`/edit/${user.email}`}>
                                       <AiFillEdit size={32}color="#000" />
+                                    </Link>
                                   </button>
                                   <button type="button" onClick={()=>handleDelete(user)}>
                                       <MdDelete color="#F63E37" size={32} />

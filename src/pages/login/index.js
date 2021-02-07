@@ -42,14 +42,15 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
       const hasUser = users.find((r) => r.email === email);
-      if (hasUser.email === email && hasUser.password === password) {
+      if (hasUser&&hasUser.email === email && hasUser.password === password) {
         console.log("logado");
         setLoading(false);
         history.push('/dashboard');
+      }else{
+        notify('Credenciais inválidas, tente novamente')
+        setError(true)
+        setLoading(false);
       }
-      notify('Credenciais inválidas, tente novamente')
-      setError(true)
-      setLoading(false);
 
   }
 

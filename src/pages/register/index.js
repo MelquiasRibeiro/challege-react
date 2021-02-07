@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from "react";
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { FaArrowLeft, FaSpinner } from "react-icons/fa";
 import {toast} from 'react-toastify'
 import {
@@ -14,17 +15,16 @@ import {
 } from "./styles";
 import form from "../../assets/images/form.svg";
 
+
+
 export default function Register() {
- // const history = useHistory();
+const history = useHistory();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
 
   function notify(message) {
     toast.success(message, {
@@ -37,6 +37,7 @@ export default function Register() {
       progress: undefined,
       });
   }
+
   useEffect(() => {
     const savedUsers = localStorage.getItem("users");
     if (savedUsers) {
@@ -46,46 +47,33 @@ export default function Register() {
 
 
 
-  function confirmPaword() {
-    if (password !== passwordConfirmation) {
-      setError("as senhas não correspondem");
-    }
-    console.log(error);
-  }
-
-  useEffect(() => {
-    confirmPaword();
-  }, [passwordConfirmation, password]);
-
   function handleRegister(e) {
     e.preventDefault();
     setLoading(true);
-    try {
+
       const hasUser = users.find((r) => r.email === email);
-      if (hasUser) throw new Error("Este usuário já está cadastrado");
-      const newUser = {
-        picture: null,
-        name,
-        email,
-        phone,
-        password,
-      };
-      setUsers([...users, newUser]);
-      notify('Usuário Criado com Sucesso!')
-      setLoading(false);
-    } catch (err) {
-      setError(err);
-      console.log(err);
-      setLoading(false);
+      try {
+      if (hasUser){
+        throw new Error("Este usuário já está cadastrado");
+      }else{
+        const newUser = {
+          picture: null,
+          name,
+          email,
+          phone,
+          password,
+        };
+        const uptadetedUsers= [...users,newUser];
+        console.log([...users,newUser],'lucas');
+        notify('Usuário Criado com Sucesso!')
+        setLoading(false);
+        localStorage.setItem("users", JSON.stringify(uptadetedUsers));
+        history.push('/');
+      }
+    } catch (error) {
+      console.log(error)
     }
-    // history.push('/login');
-
   }
-
-  useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(users));
-  }, [users])
-
 
   return (
     <Wrapper>
@@ -128,19 +116,13 @@ export default function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Input
-              type="password"
-              placeholder="Confirme sua senha"
-              required
-              value={passwordConfirmation}
-              onChange={(e) => setPasswordConfirmation(e.target.value)}
-            />
+
           </InputContainer>
           <Button loading={loading}>
             {loading ? <FaSpinner color="#fff" size={14} /> : "CADASTRAR"}
           </Button>
           <p>
-            <LinkBack to="/login">
+            <LinkBack to="/">
               <FaArrowLeft /> já tem cadastro?
             </LinkBack>
           </p>

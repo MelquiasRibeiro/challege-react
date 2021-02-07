@@ -10,7 +10,7 @@ export default function Header() {
       <Link to="/dashboard">
         <img src={Logo} alt="logo" />
       </Link>
-      <Cart to="/login">
+      <Cart to="/">
         <div>
           <strong>Sair</strong>
         </div>
