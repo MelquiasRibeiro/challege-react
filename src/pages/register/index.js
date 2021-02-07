@@ -26,16 +26,29 @@ const history = useHistory();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  function notify(message) {
-    toast.success(message, {
-      position: "top-center",
-      autoClose: false,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
+  function notify(message,type) {
+    if(type==='sucess'){
+      toast.success(message, {
+        position: "top-center",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    }else{
+      toast.error(message, {
+        position: "top-center",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    }
+
   }
 
   useEffect(() => {
@@ -54,7 +67,8 @@ const history = useHistory();
       const hasUser = users.find((r) => r.email === email);
       try {
       if (hasUser){
-        throw new Error("Este usuário já está cadastrado");
+        notify('Este usuário já está cadastrado','error');
+        setLoading(false);
       }else{
         const newUser = {
           picture: null,
@@ -65,7 +79,7 @@ const history = useHistory();
         };
         const uptadetedUsers= [...users,newUser];
         console.log([...users,newUser],'lucas');
-        notify('Usuário Criado com Sucesso!')
+        notify('Usuário Criado com Sucesso!','sucess')
         setLoading(false);
         localStorage.setItem("users", JSON.stringify(uptadetedUsers));
         history.push('/');

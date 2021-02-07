@@ -31,9 +31,10 @@ export const ListItem = styled.li`
   padding: 8px;
   background-color: #ffffff;
   > img {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     margin: 0 16px;
+    border-radius:8px;
   }
 `;
 export const RigthSideContainer = styled.div`
