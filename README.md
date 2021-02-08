@@ -4,7 +4,7 @@
 Nesta aplicação você pode CADASTRAR, REMOVER e ATUALIZAR usuários.
 
 ## telas:
-o desing foi pensado com base no [protótipo](https://projects.invisionapp.com/share/Q6T6JI44FTY#/screens/376025914).
+o desing foi pensado com base no [protótipo](https://www.figma.com/file/sjtLXAMNTHevE6Lp0U9xEU/pulseChallenge?node-id=0%3A1) elaborado no FIGMA.
 
 ![Screenshot from 2021-02-08 01-15-56](https://user-images.githubusercontent.com/54459438/107175718-52d64e80-69ac-11eb-9cd2-ed0491d31182.png)
 ![Screenshot from 2021-02-08 01-16-06](https://user-images.githubusercontent.com/54459438/107175719-536ee500-69ac-11eb-9bd8-ea7b3448039d.png)
