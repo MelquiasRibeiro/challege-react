@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from 'react-router-dom';
 import { FaSignInAlt } from "react-icons/fa";
 import {toast} from 'react-toastify'
@@ -10,21 +10,17 @@ import {
   Button,
   LinkBack,
 } from "./styles";
+import {GlobalContext} from "../../providers/globalState"
 
 export default function Login() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const savedUsers = localStorage.getItem("users");
-    if (savedUsers) {
-      setUsers(JSON.parse(savedUsers));
-    }
-  }, []);
+  const { users} = useContext(GlobalContext);
+
 
   function notify(message) {
     toast.error(message, {

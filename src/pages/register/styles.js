@@ -110,8 +110,11 @@ export const Button = styled.button.attrs((props) => ({
     `}
 `;
 export const LinkBack = styled(Link)`
-  text-decoration: none;
   transition: opacity 0.2s;
+  text-decoration: none;
+  color:inherit;
+  display:flex;
+  align-items:center;
   &:hover {
     opacity: 0.7;
   }

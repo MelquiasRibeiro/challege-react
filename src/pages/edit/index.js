@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import React,{useState,useEffect} from "react";
-import {  FaSpinner,FaArrowLeft } from "react-icons/fa";
+import React,{useState,useEffect,useContext} from "react";
+import { FaSpinner,FaArrowLeft } from "react-icons/fa";
 import {Link} from "react-router-dom";
+import { GlobalContext } from "../../providers/globalState";
 import {
     Wrapper,
     Content,
@@ -16,7 +17,6 @@ import Header from "../../components/header";
 import UserPic from "../../assets/images/user.svg";
 
 export default function Edit({match}) {
-  const [users, setUsers] = useState([]);
   const [newEmail, setNewEmail] = useState("");
   const [newName, setNewName] = useState("");
   const [newPhone, setNewPhone] = useState("");
@@ -25,51 +25,40 @@ export default function Edit({match}) {
   const [loading, ] = useState(false);
 
   const userEmail= match.params.email;
+  const { users,editUser } = useContext(GlobalContext);
 
   useEffect(() => {
-    const savedUsers = localStorage.getItem("users");
-    if (savedUsers) {
-   setUsers(JSON.parse(savedUsers));
-    }
-}, []);
+    const user = users.find((r) => r.email === userEmail);
+    const {name,email,phone,password,picture} = user;
+    setNewName(name)
+    setNewPhone(phone)
+    setNewEmail(email)
+    setNewPassword(password)
+    setNewUrlImage(picture)
+  }, [])
 
-// function findTheUser() {
-//   const user = users.find((u) => u.email === userEmail);
-//   const {name,email,phone,password,picture} =user;
 
-//   setNewName(name);
-//   setNewEmail(email);
-//   setNewPhone(phone);
-//   setNewPassword(password);
-//   setNewUrlImage(picture)
-// }
-// useEffect(() => {
-//   findTheUser()
-// }, [])
+ function HandleEdit(e) {
+   e.preventDefault();
+    const userUpdated={
+      picture: newUrlImage,
+      name: newName,
+      email:newEmail,
+      phone: newPhone,
+      password: newPassword,
+    };
 
-function HandleEdit(e) {
-  e.preventDefault();
-  const newUsersList = users.filter(u=> u !== userEmail);
-  const userUpdated={
-    picture: newUrlImage,
-    name: newName,
-    email:newEmail,
-    phone: newPhone,
-    password: newPassword,
-  };
-  const uptadetedUsers= [...newUsersList,userUpdated];
-  localStorage.setItem("users", JSON.stringify(uptadetedUsers));
-}
+    editUser(userUpdated)
+ }
 
     return (
         <>
-            <Header />
-
+          <Header />
             <Wrapper >
               <Link to="/dashboard">
                 <FaArrowLeft color="#191920" size={24}/>
               </Link>
-                <h1>Edite as informaçẽos do usário</h1>
+                <h1>Edite as informações do usuário</h1>
                 <Content onSubmit={HandleEdit} >
                       <FormContainer>
                       <ImageContainer>

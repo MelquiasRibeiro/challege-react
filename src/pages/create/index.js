@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import React,{useState,useEffect} from "react";
+import React,{useState,useContext} from "react";
 import {  FaSpinner,FaArrowLeft } from "react-icons/fa";
 import {Link} from "react-router-dom";
+import { GlobalContext } from "../../providers/globalState";
 import {
     Wrapper,
     Content,
@@ -16,21 +17,13 @@ import Header from "../../components/header";
 import UserPic from "../../assets/images/user.svg";
 
 export default function create() {
-  const [users, setUsers] = useState([]);
   const [newEmail, setNewEmail] = useState("");
   const [newName, setNewName] = useState("");
   const [newPhone, setNewPhone] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newUrlImage, setNewUrlImage] = useState(null);
   const [loading, ] = useState(false);
-
-
-  useEffect(() => {
-    const savedUsers = localStorage.getItem("users");
-    if (savedUsers) {
-   setUsers(JSON.parse(savedUsers));
-    }
-}, []);
+  const { addUser } = useContext(GlobalContext);
 
 function HandleCreate(e) {
   e.preventDefault();
@@ -41,10 +34,9 @@ function HandleCreate(e) {
     phone: newPhone,
     password: newPassword,
   };
-  const uptadetedUsers= [...users,newUser];
-  localStorage.setItem("users", JSON.stringify(uptadetedUsers));
-}
+  addUser(newUser);
 
+}
     return (
         <>
             <Header />

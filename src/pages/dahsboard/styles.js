@@ -10,6 +10,24 @@ export const Wrapper = styled.div`
   > h1 {
     margin-bottom: 32px;
   }
+  > button{
+    background-color:#5CB85C;
+    border:none;
+    align-self:flex-end;
+    display:flex;
+    align-items:center;
+    font-size:16px;
+    font-weight:bold;
+    padding:8px;
+    border-radius:4px;
+    &:hover {
+    opacity: 0.7;
+  }
+  >a{
+    text-decoration: none;
+    color:inherit;
+  }
+  }
 `;
 export const ListContainer = styled.ul`
   display: flex;

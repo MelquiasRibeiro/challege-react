@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-expressions */
-import React, { useState, useEffect } from "react";
+import React, { useState,useContext} from "react";
 import { useHistory } from 'react-router-dom';
 import { FaArrowLeft, FaSpinner } from "react-icons/fa";
 import {toast} from 'react-toastify'
+import {GlobalContext} from "../../providers/globalState"
 import {
   Wrapper,
   RegisterContainer,
@@ -18,13 +19,15 @@ import form from "../../assets/images/form.svg";
 
 
 export default function Register() {
-const history = useHistory();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const history = useHistory();
+
+  const { users,addUser} = useContext(GlobalContext);
 
   function notify(message,type) {
     if(type==='sucess'){
@@ -51,15 +54,6 @@ const history = useHistory();
 
   }
 
-  useEffect(() => {
-    const savedUsers = localStorage.getItem("users");
-    if (savedUsers) {
-      setUsers(JSON.parse(savedUsers));
-    }
-  }, []);
-
-
-
   function handleRegister(e) {
     e.preventDefault();
     setLoading(true);
@@ -77,11 +71,9 @@ const history = useHistory();
           phone,
           password,
         };
-        const uptadetedUsers= [...users,newUser];
-        console.log([...users,newUser],'lucas');
         notify('Usuário Criado com Sucesso!','sucess')
+        addUser(newUser);
         setLoading(false);
-        localStorage.setItem("users", JSON.stringify(uptadetedUsers));
         history.push('/');
       }
     } catch (error) {

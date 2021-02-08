@@ -19,6 +19,7 @@ body{
     margin: 0 auto;
     padding: 0 20px 50px;
 }
+
 body, input, button {
  font: 14px Roboto,sans-serif;
  color:#ffffff;
