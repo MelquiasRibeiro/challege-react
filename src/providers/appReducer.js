@@ -1,6 +1,12 @@
 /* eslint-disable no-case-declarations */
 export default (state, action) => {
   switch (action.type) {
+    case 'LOGOUT':
+      localStorage.clear();
+      return{
+        ...state,
+        users:[]
+      }
     case 'REMOVE_USER':
       const uptatedUsers= state.users.filter(user => user.email !== action.payload)
       localStorage.setItem("users", JSON.stringify(uptatedUsers));
@@ -24,6 +30,7 @@ export default (state, action) => {
         }
         return user;
       })
+      localStorage.setItem("users", JSON.stringify(updateUsers));
       return {
         ...state,
         users: updateUsers

@@ -10,12 +10,18 @@ export const Wrapper = styled.div`
   > h1 {
     margin-bottom: 32px;
   }
-  > button{
-    background-color:#5CB85C;
-    border:none;
+  > a{
+    text-decoration: none;
+    color:inherit;
     align-self:flex-end;
     display:flex;
     align-items:center;
+    @media (max-width: 768px) {
+      align-self:center;
+    }
+  >button{
+    background-color:#39823B;
+    border:none;
     font-size:16px;
     font-weight:bold;
     padding:8px;
@@ -23,9 +29,6 @@ export const Wrapper = styled.div`
     &:hover {
     opacity: 0.7;
   }
-  >a{
-    text-decoration: none;
-    color:inherit;
   }
   }
 `;
@@ -35,6 +38,17 @@ export const ListContainer = styled.ul`
   flex: 1;
   width: 90%;
   padding: 16px;
+  >img{
+    align-self:center;
+    font-size:16px;
+    width:30%;
+    margin-top:40px;
+  }
+  >p{
+    align-self:center;
+    font-size:16px;
+    margin:8px;
+  }
 `;
 
 export const ListItem = styled.li`

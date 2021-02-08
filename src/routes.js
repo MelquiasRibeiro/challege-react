@@ -5,6 +5,7 @@ import Register from "./pages/register";
 import Dash from "./pages/dahsboard";
 import Edit from "./pages/edit";
 import Create from "./pages/create";
+import NotFound  from "./pages/notFound";
 
 export default function routes() {
     return (
@@ -14,6 +15,7 @@ export default function routes() {
                 <Route path="/register" exact component={Register} />
                 <Route path="/edit/:email" exact component={Edit} />
                 <Route path="/create" exact component={Create} />
+                <Route component={NotFound}/>
             </Switch>
     );
 }

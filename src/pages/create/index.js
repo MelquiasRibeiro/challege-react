@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React,{useState,useContext} from "react";
-import {  FaSpinner,FaArrowLeft } from "react-icons/fa";
-import {Link} from "react-router-dom";
+import { FaSpinner,FaArrowLeft } from "react-icons/fa";
+import {Link,useHistory} from "react-router-dom";
 import { GlobalContext } from "../../providers/globalState";
+
 import {
     Wrapper,
     Content,
@@ -15,6 +16,9 @@ import {
 } from "./styles";
 import Header from "../../components/header";
 import UserPic from "../../assets/images/user.svg";
+import notify from "../../utils/notify";
+
+
 
 export default function create() {
   const [newEmail, setNewEmail] = useState("");
@@ -22,19 +26,35 @@ export default function create() {
   const [newPhone, setNewPhone] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newUrlImage, setNewUrlImage] = useState(null);
-  const [loading, ] = useState(false);
-  const { addUser } = useContext(GlobalContext);
+  const [loading, setLoading] = useState(false);
+
+  const history = useHistory();
+
+  const { addUser,users } = useContext(GlobalContext);
+
+
 
 function HandleCreate(e) {
+
   e.preventDefault();
-  const newUser={
-    picture: newUrlImage,
-    name: newName,
-    email:newEmail,
-    phone: newPhone,
-    password: newPassword,
-  };
-  addUser(newUser);
+  const hasUser = users.find((r) => r.email === newEmail);
+
+  if (hasUser){
+    notify('Este usuário já está cadastrado','error');
+    setLoading(false);
+  }else{
+    const newUser={
+      picture: newUrlImage,
+      name: newName,
+      email:newEmail,
+      phone: newPhone,
+      password: newPassword,
+    };
+    notify('Usuário Criado com Sucesso!','sucess');
+    addUser(newUser);
+    setLoading(false);
+    history.push('/dashboard');
+  }
 
 }
     return (
@@ -68,7 +88,7 @@ function HandleCreate(e) {
                         <p>Telefone</p>
                         <Input
                           type="text"
-                          placeholder="Digite seu telefone"
+                          placeholder="(98)999999999"
                           required
                           value={newPhone}
                           onChange={(e) => setNewPhone(e.target.value)}
@@ -101,3 +121,4 @@ function HandleCreate(e) {
         </>
     );
 }
+

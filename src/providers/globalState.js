@@ -36,7 +36,15 @@ export const GlobalProvider = ({ children }) => {
       type: 'EDIT_USER',
       payload: user
     })
+
   }
+  const logout = () => {
+    dispatch({
+      type: 'LOGOUT',
+    })
+
+  }
+
 
   return (
     <GlobalContext.Provider value={{
@@ -44,6 +52,7 @@ export const GlobalProvider = ({ children }) => {
       removeUser,
       addUser,
       editUser,
+      logout,
 
     }}>
       {children}

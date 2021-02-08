@@ -16,6 +16,10 @@ export const Wrapper = styled.div`
   > h1 {
     margin-bottom: 32px;
     color: #191920;
+    @media (max-width: 768px) {
+      text-align:center;
+      margin-top:16px;
+    }
   }
   >a{
     align-self:flex-start;
@@ -24,6 +28,7 @@ export const Wrapper = styled.div`
   &:hover {
     opacity: 0.7;
   }
+
   }
 
 `;
@@ -39,6 +44,11 @@ export const FormContainer = styled.div`
   flex-direction: row;
   flex: 1;
   justify-content:space-between;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    }
 `;
 
 export const ImageContainer = styled.div`
@@ -47,12 +57,19 @@ export const ImageContainer = styled.div`
   flex-direction:column;
   align-items:center;
   margin:0 40px 0 0;
+  @media (max-width: 768px) {
+    margin:0 0 0 0;
+
+    }
   > img {
     width: 108px;
     height: 108px;
     border:solid 1px #191920;
     padding:8px;
     border-radius:12px;
+    @media (max-width: 768px) {
+    margin:0 0 16px 0;
+    }
   }
   > p {
     display: flex;
@@ -60,6 +77,10 @@ export const ImageContainer = styled.div`
     margin: 16px 0 0px 0;
     color: #191920;
     font-size: 14px;
+    @media (max-width: 768px) {
+    margin:0 0 0 0;
+
+    }
   }
 `;
 
@@ -78,12 +99,20 @@ export const Input = styled.input`
 export const InfoContainer = styled.div`
   flex:1;
   margin:0 0 0 40px;
+  @media (max-width: 768px) {
+    margin:0 0 0 0;
+
+    }
 > p {
     display: flex;
     align-items: center;
     margin: 16px 0 0px 0;
     color: #191920;
     font-size: 14px;
+    @media (max-width: 768px) {
+    margin:16 0 0 0;
+
+    }
   }
 `;
 

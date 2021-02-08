@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React,{useState,useEffect,useContext} from "react";
 import { FaSpinner,FaArrowLeft } from "react-icons/fa";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import { GlobalContext } from "../../providers/globalState";
 import {
     Wrapper,
@@ -15,6 +15,8 @@ import {
 } from "./styles";
 import Header from "../../components/header";
 import UserPic from "../../assets/images/user.svg";
+import notify from "../../utils/notify";
+
 
 export default function Edit({match}) {
   const [newEmail, setNewEmail] = useState("");
@@ -24,8 +26,12 @@ export default function Edit({match}) {
   const [newUrlImage, setNewUrlImage] = useState(null);
   const [loading, ] = useState(false);
 
-  const userEmail= match.params.email;
   const { users,editUser } = useContext(GlobalContext);
+
+  const history = useHistory();
+
+  const userEmail= match.params.email;
+
 
   useEffect(() => {
     const user = users.find((r) => r.email === userEmail);
@@ -49,6 +55,8 @@ export default function Edit({match}) {
     };
 
     editUser(userUpdated)
+    notify('Editado com Sucesso','sucess')
+    history.push('/dashboard')
  }
 
     return (

@@ -2,8 +2,8 @@
 import React, { useState,useContext} from "react";
 import { useHistory } from 'react-router-dom';
 import { FaArrowLeft, FaSpinner } from "react-icons/fa";
-import {toast} from 'react-toastify'
 import {GlobalContext} from "../../providers/globalState"
+import notify from "../../utils/notify";
 import {
   Wrapper,
   RegisterContainer,
@@ -17,8 +17,8 @@ import {
 import form from "../../assets/images/form.svg";
 
 
-
 export default function Register() {
+
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -29,30 +29,7 @@ export default function Register() {
 
   const { users,addUser} = useContext(GlobalContext);
 
-  function notify(message,type) {
-    if(type==='sucess'){
-      toast.success(message, {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
-    }else{
-      toast.error(message, {
-        position: "top-center",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
-    }
 
-  }
 
   function handleRegister(e) {
     e.preventDefault();
@@ -81,6 +58,7 @@ export default function Register() {
     }
   }
 
+
   return (
     <Wrapper>
       <RegisterContainer>
@@ -100,7 +78,7 @@ export default function Register() {
             />
             <Input
               type="text"
-              placeholder="Digite seu telefone"
+              placeholder="(98)981877537"
               required
               value={phone}
               onChange={(e) => setPhone(e.target.value)}

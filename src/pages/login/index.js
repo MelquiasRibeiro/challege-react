@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from 'react-router-dom';
 import { FaSignInAlt } from "react-icons/fa";
-import {toast} from 'react-toastify'
+import notify from "../../utils/notify";
 import {
   Wrapper,
   LoginContainer,
@@ -22,17 +22,7 @@ export default function Login() {
   const { users} = useContext(GlobalContext);
 
 
-  function notify(message) {
-    toast.error(message, {
-      position: "top-center",
-      autoClose: false,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
-  }
+
 
   function Handlelogin(e) {
     e.preventDefault();
@@ -43,7 +33,7 @@ export default function Login() {
         setLoading(false);
         history.push('/dashboard');
       }else{
-        notify('Credenciais inválidas, tente novamente')
+        notify('Credenciais inválidas, tente novamente','error')
         setError(true)
         setLoading(false);
       }

@@ -18,6 +18,9 @@ export const RegisterContainer = styled.div`
   height: 530px;
   border-radius: 12px;
   padding: 16px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    }
 `;
 
 export const InfoContainer = styled.div`
@@ -32,6 +35,9 @@ export const InfoContainer = styled.div`
   > img {
     height: 300px;
     width: 200px;
+    @media (max-width: 768px) {
+    display: none;
+    }
   }
 `;
 
@@ -117,5 +123,8 @@ export const LinkBack = styled(Link)`
   align-items:center;
   &:hover {
     opacity: 0.7;
+  }
+  > svg{
+    margin-right:8px;
   }
 `;

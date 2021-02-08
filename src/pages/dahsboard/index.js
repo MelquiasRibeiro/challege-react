@@ -12,6 +12,8 @@ import {
 } from "./styles";
 import Header from "../../components/header";
 import UserPic from "../../assets/images/user.svg";
+import Empty from "../../assets/images/empty.svg";
+
 
 export default function Dashboard() {
   const { users, removeUser } = useContext(GlobalContext);
@@ -21,13 +23,13 @@ export default function Dashboard() {
             <Header />
             <Wrapper>
                 <h1>Lista de Usuários</h1>
-                <button type="button">
                   <Link to="/create">
-                    CRIAR  USUÁRIO
+                    <button type="button">
+                        CRIAR  USUÁRIO
+                    </button>
                   </Link>
-                </button>
                 <ListContainer>
-                    {users.map((user) => (
+                    {users.length===0 ? <><img src={Empty} alt="empty"/><p>Lista vazia :(</p></> :users.map((user) => (
                         <ListItem key={user.name}>
                             <img src={user.picture===null? UserPic:user.picture} alt="user.name" />
                             <RigthSideContainer>
@@ -39,11 +41,11 @@ export default function Dashboard() {
                                 <IconsContainer>
                                   <button type="button"  >
                                     <Link to={`/edit/${user.email}`}>
-                                      <AiFillEdit size={32}color="#FFBD3D" />
+                                      <AiFillEdit size={32}color="#FFC23D" />
                                     </Link>
                                   </button>
                                   <button type="button" onClick={() => removeUser(user.email)}>
-                                      <MdDelete color="#F63E37" size={32} />
+                                      <MdDelete color="#DC3B45" size={32} />
                                   </button>
                                 </IconsContainer>
                             </RigthSideContainer>

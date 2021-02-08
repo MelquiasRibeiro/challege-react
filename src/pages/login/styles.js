@@ -90,4 +90,7 @@ export const LinkBack = styled(Link)`
   &:hover {
     opacity: 0.7;
   }
+  > svg{
+    margin-left:8px;
+  }
 `;
