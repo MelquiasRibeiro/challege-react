@@ -12,13 +12,17 @@ o desing foi pensado com base no [protótipo](https://projects.invisionapp.com/s
 ![Screenshot from 2021-02-08 01-19-06](https://user-images.githubusercontent.com/54459438/107175722-54077b80-69ac-11eb-8d34-19ee181d7758.png)
 ![Screenshot from 2021-02-08 01-22-34](https://user-images.githubusercontent.com/54459438/107175725-54a01200-69ac-11eb-9c03-b4c7f01ca01f.png)
 
-você pode testar o projeto [Aqui](http://pulsechallenge.surge.sh/).
+você pode testar o projeto [Aqui](https://challege-react.vercel.app/).
 
 
 ## Como Rodar este projeto:
 1. clone o projeto em sua maquina ```git clone https://github.com/MelquiasRibeiro/mm-react-test-web.git```;
 2. instale as dependencias necessárias ```npm install```;
 3. inicie o projeto ```npm start``` e acesse localhost:3000.
+
+## Padrão de commits:
+O padrão adotado para os commits deste projeto foi o do [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+ 
 
 
 ## Conceitos abordados neste projeto:
@@ -27,6 +31,7 @@ você pode testar o projeto [Aqui](http://pulsechallenge.surge.sh/).
 + [Styled Components](https://styled-components.com/);
 + Gerenciamento de estado usando [Context API](https://pt-br.reactjs.org/docs/context.html);
 + Armazenamento de dados no LocalStorage;
++ CI/CD
 + Responsividade
 + Renderização Condicional;
 + Tratamento de Erros;
