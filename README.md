@@ -16,7 +16,7 @@ você pode testar o projeto [Aqui](https://challege-react.vercel.app/).
 
 
 ## Como Rodar este projeto:
-1. clone o projeto em sua maquina ```git clone https://github.com/MelquiasRibeiro/mm-react-test-web.git```;
+1. clone o projeto em sua maquina ```https://github.com/MelquiasRibeiro/challege-react.git```;
 2. instale as dependencias necessárias ```npm install```;
 3. inicie o projeto ```npm start``` e acesse localhost:3000.
 
